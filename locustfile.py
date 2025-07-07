@@ -23,6 +23,8 @@ import uuid
 
 class HugmeEXPUser(HttpUser):
     wait_time = between(1, 3)
+    connection_timeout = 60.0  # 연결 타임아웃 60초
+    network_timeout = 60.0     # 네트워크 타임아웃 60초
     
     def on_start(self):
         """테스트 시작 시 실행되는 메서드"""

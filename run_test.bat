@@ -10,7 +10,7 @@ REM 기본 설정 (locustfile.py와 일치)
 set "LOCUST_HOST=http://localhost:8081"
 set "LOCUST_USERS=1000"
 set "LOCUST_SPAWN_RATE=1.67"
-set "LOCUST_RUN_TIME=600s"
+set "LOCUST_RUN_TIME=900s"
 set "LOCUST_CSV=stress_test"
 
 REM 사용자 입력 받기
@@ -18,7 +18,7 @@ echo 기본 설정:
 echo - 서버 주소: %LOCUST_HOST%
 echo - 최대 동시 사용자 수: %LOCUST_USERS%명
 echo - 사용자 증가율: %LOCUST_SPAWN_RATE%명/초 (분당 100명)
-echo - 실행 시간: %LOCUST_RUN_TIME% (10분)
+echo - 실행 시간: %LOCUST_RUN_TIME% (15분)
 echo.
 
 set /p choice="기본 설정으로 실행하시겠습니까? (y/n): "
@@ -28,7 +28,7 @@ if /i "%choice%"=="n" (
     set /p "input_host=서버 주소 입력 (기본: %LOCUST_HOST%): "
     set /p "input_users=최대 동시 사용자 수 입력 (기본: %LOCUST_USERS%): "
     set /p "input_spawn_rate=사용자 증가율 입력 (기본: %LOCUST_SPAWN_RATE%명/초, 분당 100명): "
-    set /p "input_run_time=실행 시간 입력 (기본: %LOCUST_RUN_TIME%): "
+    set /p "input_run_time=실행 시간 입력 (기본: %LOCUST_RUN_TIME%, 15분): "
     
     if not "!input_host!"=="" set "LOCUST_HOST=!input_host!"
     if not "!input_users!"=="" set "LOCUST_USERS=!input_users!"
@@ -43,7 +43,7 @@ echo ========================================
 echo 서버 주소: %LOCUST_HOST%
 echo 최대 동시 사용자 수: %LOCUST_USERS%명
 echo 사용자 증가율: %LOCUST_SPAWN_RATE%명/초 (분당 100명)
-echo 실행 시간: %LOCUST_RUN_TIME% (10분)
+echo 실행 시간: %LOCUST_RUN_TIME% (15분)
 echo 결과 파일: %LOCUST_CSV%_*.csv
 echo ========================================
 echo.
