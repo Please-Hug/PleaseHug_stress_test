@@ -1,0 +1,2 @@
+Method,Name,Error,Occurrences
+POST,/api/register,HTTPError('409 Client Error:  for url: /api/register'),102

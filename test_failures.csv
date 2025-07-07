@@ -1,0 +1,4 @@
+Method,Name,Error,Occurrences
+GET,/api/v1/studydiary/today/popular,CatchResponseError('인기 배움일기 조회 실패: 500'),1
+GET,/api/v1/studydiary?page=1&size=10&sort=createdAt%2Cdesc,CatchResponseError('배움일기 목록 조회 실패: 500'),1
+GET,/api/v1/studydiary/search?keyword=Python&page=0&size=5,CatchResponseError('배움일기 검색 실패: 500'),1
