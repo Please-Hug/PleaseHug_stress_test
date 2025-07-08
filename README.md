@@ -66,24 +66,60 @@ pip install locust
 pip install -r requirements.txt
 ```
 
-### 1. Windows에서 실행
+### 1. 전체 시스템 테스트
+전체 플랫폼에 대한 종합적인 부하테스트를 실행합니다.
+
+#### Windows에서 실행
 ```bash
 run_test.bat
 ```
 
-### 2. Linux/macOS에서 실행
+#### Linux/macOS에서 실행
 ```bash
 chmod +x run_test.sh
 ./run_test.sh
 ```
 
+### 2. 🎯 미션 전용 테스트 (신규!)
+미션 관련 API만을 집중적으로 테스트하는 전용 스크립트입니다.
+
+#### Windows에서 실행
+```bash
+run_mission_test.bat
+```
+
+#### Linux/macOS에서 실행
+```bash
+chmod +x run_mission_test.sh
+./run_mission_test.sh
+```
+
+#### 미션 전용 테스트 특징
+- **타겟 API**: 미션 조회, 참가, 태스크 관리 등
+- **테스트 시간**: 15분 (기본값)
+- **동시 사용자**: 1000명 (기본값)
+- **증가율**: 분당 100명씩 점진적 증가
+- **결과 파일**: `mission_test_*.csv`
+
 ### 3. 직접 실행
+
+#### 전체 시스템 테스트
 ```bash
 # 기본 설정으로 실행
-locust -f locustfile.py --host=http://localhost:8080 --users=100 --spawn-rate=10 --run-time=300s --csv=stress_test --headless
+locust -f locustfile.py --host=http://localhost:8081 --users=1000 --spawn-rate=1.67 --run-time=600s --csv=stress_test --headless
 
 # 웹 UI로 실행 (수동 설정)
-locust -f locustfile.py --host=http://localhost:8080
+locust -f locustfile.py --host=http://localhost:8081
+# 브라우저에서 http://localhost:8089 접속
+```
+
+#### 미션 전용 테스트
+```bash
+# 미션 전용 테스트 실행
+locust -f locustfile_mission_only.py --host=http://localhost:8081 --users=1000 --spawn-rate=1.67 --run-time=900s --csv=mission_test --headless
+
+# 미션 전용 웹 UI
+locust -f locustfile_mission_only.py --host=http://localhost:8081
 # 브라우저에서 http://localhost:8089 접속
 ```
 
